@@ -20,7 +20,7 @@ The model/s for the application are stored in the <tt>lib</tt> directory and are
 Installation
 ----------------
 
-Unzip / clone project into desired location. install bundle and then run server:
+Unzip / clone project into desired location. Install bundle and then run server:
 
 	bundle install
 	ruby application.rb
