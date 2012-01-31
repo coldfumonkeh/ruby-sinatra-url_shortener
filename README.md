@@ -20,6 +20,8 @@ The model/s for the application are stored in the <tt>lib</tt> directory and are
 Installation
 ----------------
 
+Unzip / clone project into desired location. install bundle and then run server:
+
 	bundle install
 	ruby application.rb
 
@@ -32,3 +34,4 @@ Download
 ### 1.0.0 - January 31, 2012###
  
 - Commit: Initial Release
+- Revised save method to include first_or_create for short_urls and added clickTrack model

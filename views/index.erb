@@ -79,7 +79,7 @@
 			<% if @shortcode %>
 			<div class="result">
 				Your shortened URL is:
-				<a href="http://monkeh.me/<%= @shortcode %>">http://monkeh.me/<%= @shortcode %></a>
+				<a href="<%= SiteConfig.url_base + @shortcode %>"><%= SiteConfig.url_base + @shortcode %></a>
 			</div>
 			<% end %>
 		</div>

@@ -7,6 +7,17 @@ configure do
 	set :views, "#{File.dirname(__FILE__)}/views"
 end
 
+configure :development do
+    DataMapper.auto_upgrade!
+    
+    # very useful for debugging parameters sent via the console
+	before do
+	  puts '[Params]'
+	  p params
+	end
+    
+end
+
 error do
 	e	=	request.env['sinatra.error']
 	Kernel.puts e.backtrace.join("\n")
@@ -32,22 +43,19 @@ end
 get '/' do
 
 	if params[:url] and not params[:url].empty?
+	
 		@shortcode = random_string 5
-
-		su 		= 	ShortURL.new
-        su.url          =       params[:url]
-        su.short_url    =       @shortcode
-        su.created_at   =       Time.now
-        su.updated_at   =       Time.now
-        su.save
-
-		if su.save
-			get_site_url(su.short_url)
-		else
-  			#show an error
-			'The database didnt store the short url'
-		end
-
+	
+		su = ShortURL.first_or_create(
+						{	:url => params[:url]	}, 
+						{
+							:short_url	=>	@shortcode,
+							:created_at	=>	Time.now,
+							:updated_at	=>	Time.now
+						})
+		
+		get_site_url(su.short_url)
+		
 	else
 		# you can use this page to redirect to another location
 		# or to display a front-end form for any site visitors
@@ -56,41 +64,27 @@ get '/' do
 
 end
 
-# shorten.json
-get '/shorten.json' do
- 
-	if params[:url] and not params[:url].empty?
-    
-    	@shortcode = random_string 5
-			
-		su              =       ShortURL.new
-        su.url          =       params[:url]
-        su.short_url    =       @shortcode
-        su.created_at   =       Time.now
-        su.updated_at   =       Time.now
-        su.save
-
-		content_type :json
-		{ :url => get_site_url(su.short_url), :long_url => su.url, :hash => @shortcode }.to_json
-
-	else
-
-		content_type :json
-		{ :message => 'No URL parameter was specified' }.to_json
-
-	end
-
-end
 
 # display short url from root
 get '/:short_url' do
 	@URLData = ShortURL.get(params[:short_url])	
 
 	if @URLData
+	
+		# log the click in the database		
+		ct = ClickTrack.new
+		ct.attributes	=	{ 
+				:short_url 	=> 	params[:short_url],
+				:url		=>	@URLData.url,	
+				:clicked_at	=>	Time.now
+			}
+		ct.save
+		
 		redirect @URLData.url
 	end
 	
 end
+
 
 # expand url data
 get '/expand/:hash' do
