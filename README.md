@@ -20,8 +20,8 @@ The model/s for the application are stored in the <tt>lib</tt> directory and are
 Installation
 ----------------
 
-  bundle install
-  ruby application.rb
+	bundle install
+	ruby application.rb
 
 
 Download
