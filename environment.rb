@@ -3,6 +3,7 @@ require 'bundler/setup'
 require 'data_mapper'
 require 'json'
 require 'ostruct'
+require 'rake'
 
 require 'sinatra' unless defined?(Sinatra)
 
