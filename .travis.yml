@@ -9,3 +9,5 @@ branches:
 notifications:
   email:
     - me@mattgifford.co.uk
+
+script: bundle exec rspec spec
