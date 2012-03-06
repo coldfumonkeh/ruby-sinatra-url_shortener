@@ -4,7 +4,6 @@ require 'data_mapper'
 require 'json'
 require 'ostruct'
 require 'rake'
-require 'spec'
 
 require 'sinatra' unless defined?(Sinatra)
 
