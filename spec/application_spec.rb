@@ -16,10 +16,10 @@ describe 'URL Shortening Service' do
     last_response.should be_ok
   end
   
-  it "should obtain a shortened URL from the query param" do
-    get '/?url=http://www.google.com'
-    last_response.should be_ok
-  end
+  #it "should obtain a shortened URL from the query param" do
+  #  get '/?url=http://www.google.com'
+  #  last_response.should be_ok
+  #end
   
   it "should fail when trying to expand a hash that hasnt been sent" do
     get '/expand/'
