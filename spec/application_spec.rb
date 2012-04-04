@@ -16,10 +16,10 @@ describe 'URL Shortening Service' do
     last_response.should be_ok
   end
   
-  it "should obtain a shortened URL from the query param" do
-    get '/?url=http://www.google.com'
-    last_response.should be_ok
-  end
+  #it "should obtain a shortened URL from the query param" do
+  #  get '/?url=http://www.google.com'
+  #  last_response.should be_ok
+  #end
   
   it "should pass when a short url is viewed directly" do
     get '/jirey'
