@@ -35,6 +35,20 @@ helpers do
 	def get_site_url(short_url)
 		SiteConfig.url_base + short_url
 	end
+	
+	def generate_short_url(long_url)
+	  @shortcode = random_string 5
+  
+    su = ShortURL.first_or_create(
+            { :url => long_url  }, 
+            {
+              :short_url  =>  @shortcode,
+              :created_at =>  Time.now,
+              :updated_at =>  Time.now
+            })
+    
+    get_site_url(su.short_url)
+	end
 
 end
 
@@ -44,31 +58,43 @@ get '/' do
 
 	if params[:url] and not params[:url].empty?
 	
-		@shortcode = random_string 5
-	
-		su = ShortURL.first_or_create(
-						{	:url => params[:url]	}, 
-						{
-							:short_url	=>	@shortcode,
-							:created_at	=>	Time.now,
-							:updated_at	=>	Time.now
-						})
-		
-		get_site_url(su.short_url)
+		generate_short_url(params[:url])
 		
 	else
 		# you can use this page to redirect to another location
 		# or to display a front-end form for any site visitors
-
+		
+		# get the current count of all links stored
+    # @urls = ShortURL.all;
+    
+    # erb :index
+		
 	end
 
 end
 
+post '/' do
+
+  if params[:url] and not params[:url].empty?
+  
+    generate_short_url(params[:url])
+        
+  end
+    # you can use this page to redirect to another location
+    # or to display a front-end form for any site visitors
+    
+    # get the current count of all links stored
+    # @urls = ShortURL.all;
+    
+    # erb :index
+    
+end
+
 
 # display short url from root
-["/:short_url", "/get/:short_url"].each do |path|
+["/get/:short_url", "/:short_url"].each do |path|
 get path do
-	@URLData = ShortURL.get(params[:short_url])	
+	@URLData = ShortURL.get(params[:short_url])
 
 	if @URLData
 	
@@ -82,11 +108,12 @@ get path do
 		ct.save
 		
 		redirect @URLData.url
+	else
+		'no short url found'
 	end
 	
 end
 end
-
 
 # expand url data
 get '/expand/:hash/?' do
