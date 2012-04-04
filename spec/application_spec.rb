@@ -16,15 +16,15 @@ describe 'URL Shortening Service' do
     last_response.should be_ok
   end
   
-  it "should pass when a short url is viewed directly" do
-    get '/jirey'
-    last_response.should be_ok
-  end
+  #it "should pass when a short url is viewed directly" do
+  #  get '/jirey'
+  #  last_response.should be_ok
+  #end
   
-  it "should pass when a short url is viewed using the 'get' route" do
-    get '/get/jirey'
-    last_response.should be_ok
-  end
+  #it "should pass when a short url is viewed using the 'get' route" do
+  #  get '/get/jirey'
+  #  last_response.should be_ok
+  #end
   
   it "should fail when trying to expand a hash that hasnt been sent" do
     get '/expand/'
