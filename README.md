@@ -9,7 +9,7 @@ Simply fork it and build. Good times.
 
 Includes Bundler, DataMapper and Haml.
 
-Works with both Ruby 1.8.7 and Ruby 1.9.2
+Works with Ruby 1.9.2 and 1.9.3
 
 
 Configuration
@@ -32,6 +32,13 @@ Download
 ----------------
 [URL Shortener ](https://github.com/coldfumonkeh/ruby-sinatra-url_shortener/downloads)
     
+
+### 1.0.1 - April 04, 2012###
+ 
+- Commit: Updated for testing
+- Addition of rspec tests to run checks on the application routes
+- Addition of new root /post route to allow for url shortening from get or post requests
+
 
 ### 1.0.0 - January 31, 2012###
  
