@@ -31,14 +31,14 @@ describe 'URL Shortening Service' do
     last_response.should_not be_ok
   end
   
-  it "should pass when a hash has been sent to expand" do
-    get '/expand/12345'
-    last_response.should be_ok
-  end
+  #it "should pass when a hash has been sent to expand" do
+  #  get '/expand/12345'
+  #  last_response.should be_ok
+  #end
   
-  it "should pass when a hash has been sent to expand with a trailing slash" do
-    get '/expand/12345/'
-    last_response.should be_ok
-  end
+  #it "should pass when a hash has been sent to expand with a trailing slash" do
+  #  get '/expand/12345/'
+  #  last_response.should be_ok
+  #end
 
 end
