@@ -66,7 +66,8 @@ end
 
 
 # display short url from root
-get '/:short_url' do
+["/:short_url", "/get/:short_url"].each do |path|
+get path do
 	@URLData = ShortURL.get(params[:short_url])	
 
 	if @URLData
@@ -84,10 +85,11 @@ get '/:short_url' do
 	end
 	
 end
+end
 
 
 # expand url data
-get '/expand/:hash' do
+get '/expand/:hash/?' do
 	@URLData = ShortURL.get(params[:hash])	
 
 	if @URLData
