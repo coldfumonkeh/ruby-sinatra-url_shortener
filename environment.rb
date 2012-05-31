@@ -10,9 +10,9 @@ require 'sinatra' unless defined?(Sinatra)
 configure do
 
 	SiteConfig = OpenStruct.new(
-					:title => 'your application title here',
-					:author => 'your name here',
-					:url_base => 'http://localhost:4567/' # the url of your application
+					:title => 'monkeh.me',
+					:author => 'Matt Gifford',
+					:url_base => 'http://www.monkeh.me/' # the url of your application
 				)
 				
 	# load models

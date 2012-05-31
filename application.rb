@@ -21,7 +21,7 @@ end
 error do
 	e	=	request.env['sinatra.error']
 	Kernel.puts e.backtrace.join("\n")
-	'Application error'
+	'Application error - ' + env['sinatra.error'].message
 end
 
 helpers do  
@@ -85,6 +85,8 @@ post '/' do
     
     # get the current count of all links stored
     # @urls = ShortURL.all;
+
+    redirect 'http://www.mattgifford.co.uk'
     
     # erb :index
     
