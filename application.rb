@@ -5,6 +5,7 @@ require File.join(File.dirname(__FILE__), 'environment')
 
 configure do
 	set :views, "#{File.dirname(__FILE__)}/views"
+	DataMapper.finalize
 end
 
 configure :development do
