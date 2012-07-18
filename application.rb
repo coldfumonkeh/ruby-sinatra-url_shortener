@@ -123,9 +123,13 @@ get '/expand/:hash/?' do
 
 	if @URLData
 		
-		content_type :json
-		{ :url => get_site_url(@URLData.short_url), :long_url => @URLData.url, :hash => params[:hash] }.to_json
 		
+		ct = ClickTrack.all(:short_url => @URLData.short_url)
+
+		content_type :json
+		{ :url => get_site_url(@URLData.short_url), :long_url => @URLData.url, :hash => params[:hash], :num_followed => ct.count, :created_at => @URLData.created_at }.to_json
+		
+
 	else
 	
 		content_type :json
