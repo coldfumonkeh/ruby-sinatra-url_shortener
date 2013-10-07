@@ -44,3 +44,6 @@ Download
  
 - Commit: Initial Release
 - Revised save method to include first_or_create for short_urls and added clickTrack model
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/coldfumonkeh/ruby-sinatra-url_shortener/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
