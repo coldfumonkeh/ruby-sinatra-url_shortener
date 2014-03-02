@@ -10,6 +10,7 @@ gem 'dm-validations'
 gem 'dm-aggregates'
 gem 'dm-migrations'
 gem 'haml'
+gem 'coveralls', require: false
 
 group :test do
   gem 'rspec', :require => 'spec'
