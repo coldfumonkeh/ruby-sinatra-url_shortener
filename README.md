@@ -1,5 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/coldfumonkeh/ruby-sinatra-url_shortener.png?branch=master)](http://travis-ci.org/coldfumonkeh/ruby-sinatra-url_shortener)
 
+[![Coverage Status](https://coveralls.io/repos/coldfumonkeh/ruby-sinatra-url_shortener/badge.png)](https://coveralls.io/r/coldfumonkeh/ruby-sinatra-url_shortener)
+
 URL Shortening Application
 ============
 
