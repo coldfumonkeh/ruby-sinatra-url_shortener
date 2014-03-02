@@ -1,6 +1,9 @@
 require_relative '../application.rb'
 require 'rack/test'
 
+require 'coveralls'
+Coveralls.wear!
+
 set :environment, :test
 
 def app
